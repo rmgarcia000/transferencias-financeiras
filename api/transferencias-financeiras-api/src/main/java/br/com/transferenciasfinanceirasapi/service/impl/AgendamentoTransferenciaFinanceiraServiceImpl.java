@@ -47,9 +47,15 @@ public class AgendamentoTransferenciaFinanceiraServiceImpl implements Agendament
 		ContaCorrente ctaOrigem = this.ctaCorrenteRepository.findByCta(request.getContaOrigem());
 		ContaCorrente ctaDestino = this.ctaCorrenteRepository.findByCta(request.getContaDestino());
 
-		Date dataTransferencia = new SimpleDateFormat("dd-MM-yyyy").parse(request.getDataTransferencia());
 		AgendaTransacao novoAgendamento = new AgendaTransacao();
 		Date dataAgendamento = new Date();
+		Date dataTransferencia;
+		
+		try {
+			dataTransferencia = new SimpleDateFormat("dd-MM-yyyy").parse(request.getDataTransferencia());
+		} catch (Exception ex) {
+			throw new Exception("Necessário informar a data de transferência no padrão dd-MM-yyyy");
+		}
 
 		TipoTransacaoEnum tipoTransacao = this.retornaTipoTransacao(dataAgendamento, dataTransferencia);
 		BigDecimal vlTaxa = this.calculaTaxa(tipoTransacao, request.getValorTransferência(), dataAgendamento,
@@ -86,7 +92,7 @@ public class AgendamentoTransferenciaFinanceiraServiceImpl implements Agendament
 			throw new Exception("Data de transferência obrigatória");
 		}
 
-		if (DateUtil.comparaData(novoAgendamento.getDtTransferencia(), new Date()) < 0) {
+		if (DateUtil.comparaData(novoAgendamento.getDtTransferencia(), new Date()) > 0) {
 			throw new Exception("Data de transferência deve ser maior ou igual a data atual");
 		}
 
