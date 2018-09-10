@@ -6,6 +6,7 @@ CREATE TABLE tbl_agenda_transacao (
 	id_cta_origem INT NOT NULL,
 	id_cta_destino INT NOT NULL,
 	vl_taxa DECIMAL NOT NULL,
+	vl_transferencia DECIMAL,
 	dt_transferencia DATE NOT NULL,
 	dt_agendamento DATE NOT NULL,
 	PRIMARY KEY (id)

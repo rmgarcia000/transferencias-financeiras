@@ -1,13 +1,15 @@
 package br.com.transferenciasfinanceirasapi.controller.request;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AgendarRequest {
 	private String contaOrigem;
 	private String contaDestino;
 	private BigDecimal valorTransferência;
-	private Timestamp dataTransferencia;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private String dataTransferencia;
 
 	public String getContaOrigem() {
 		return contaOrigem;
@@ -33,11 +35,11 @@ public class AgendarRequest {
 		this.valorTransferência = valorTransferência;
 	}
 
-	public Timestamp getDataTransferencia() {
+	public String getDataTransferencia() {
 		return dataTransferencia;
 	}
 
-	public void setDataTransferencia(Timestamp dataTransferencia) {
+	public void setDataTransferencia(String dataTransferencia) {
 		this.dataTransferencia = dataTransferencia;
 	}
 

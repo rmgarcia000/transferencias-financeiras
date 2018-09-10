@@ -1,9 +1,8 @@
 package br.com.transferenciasfinanceirasapi.entity;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,7 +22,7 @@ import br.com.transferenciasfinanceirasapi.enums.TipoTransacaoEnum;
 public class AgendaTransacao {
 
 	@Id
-	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Enumerated(EnumType.STRING)
@@ -42,12 +41,18 @@ public class AgendaTransacao {
 
 	private BigDecimal vlTaxa;
 
-	private Timestamp dtTransferencia;
+	private BigDecimal vlTransferencia;
 
-	private Timestamp dtAgendamento;
+	private Date dtTransferencia;
+
+	private Date dtAgendamento;
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public TipoTransacaoEnum getTipoTransacao() {
@@ -90,24 +95,28 @@ public class AgendaTransacao {
 		this.vlTaxa = vlTaxa;
 	}
 
-	public Timestamp getDtTransferencia() {
+	public BigDecimal getVlTransferencia() {
+		return vlTransferencia;
+	}
+
+	public void setVlTransferencia(BigDecimal vlTransferencia) {
+		this.vlTransferencia = vlTransferencia;
+	}
+
+	public Date getDtTransferencia() {
 		return dtTransferencia;
 	}
 
-	public void setDtTransferencia(Timestamp dtTransferencia) {
+	public void setDtTransferencia(Date dtTransferencia) {
 		this.dtTransferencia = dtTransferencia;
 	}
 
-	public Timestamp getDtAgendamento() {
+	public Date getDtAgendamento() {
 		return dtAgendamento;
 	}
 
-	public void setDtAgendamento(Timestamp dtAgendamento) {
+	public void setDtAgendamento(Date dtAgendamento) {
 		this.dtAgendamento = dtAgendamento;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 }

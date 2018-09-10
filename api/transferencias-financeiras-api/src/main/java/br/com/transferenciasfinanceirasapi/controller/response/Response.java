@@ -4,6 +4,11 @@ public abstract class Response {
 	private int codigoRetorno;
 	private String mensagem;
 
+	Response() {
+		codigoRetorno = 1;
+		mensagem = "operacao realizada com sucesso!";
+	}
+	
 	public int getCodigoRetorno() {
 		return codigoRetorno;
 	}
