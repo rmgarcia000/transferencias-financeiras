@@ -3,7 +3,6 @@ package br.com.transferenciasfinanceirasapi.service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -12,7 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import br.com.transferenciasfinanceirasapi.controller.request.AgendarRequest;
-import br.com.transferenciasfinanceirasapi.entity.AgendaTransacao;
 import br.com.transferenciasfinanceirasapi.entity.ContaCorrente;
 import br.com.transferenciasfinanceirasapi.repository.ContaCorrenteRepository;
 import br.com.transferenciasfinanceirasapi.service.impl.AgendamentoTransferenciaFinanceiraServiceImpl;
@@ -30,16 +28,12 @@ public class AgendamentoTransferenciaFinanceiraServiceTest {
 	
 	@Test(expected = Exception.class)
 	public void validaDataTransferenciaVazio() throws Exception {
-		Mockito.when(ctaCorrenteRepository.findByCta(Mockito.anyString())).thenReturn(new ContaCorrente());
-
 		AgendarRequest request = new AgendarRequest();
 		agendamento.agendar(request, new Date());
 	}
 	
 	@Test(expected = Exception.class)
 	public void validaDataTransferenciaFormatoInvalido() throws Exception {
-		Mockito.when(ctaCorrenteRepository.findByCta(Mockito.anyString())).thenReturn(new ContaCorrente());
-
 		AgendarRequest request = new AgendarRequest();
 		request.setDataTransferencia("2018-11-01");
 		agendamento.agendar(request, new Date());
