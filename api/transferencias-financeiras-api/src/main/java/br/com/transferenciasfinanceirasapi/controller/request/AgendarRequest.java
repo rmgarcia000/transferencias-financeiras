@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class AgendarRequest {
 	private String contaOrigem;
 	private String contaDestino;
-	private BigDecimal valorTransferência;
+	private BigDecimal valorTransferencia;
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private String dataTransferencia;
 
@@ -27,12 +27,12 @@ public class AgendarRequest {
 		this.contaDestino = contaDestino;
 	}
 
-	public BigDecimal getValorTransferência() {
-		return valorTransferência;
+	public BigDecimal getValorTransferencia() {
+		return valorTransferencia;
 	}
 
-	public void setValorTransferência(BigDecimal valorTransferência) {
-		this.valorTransferência = valorTransferência;
+	public void setValorTransferencia(BigDecimal valorTransferência) {
+		this.valorTransferencia = valorTransferência;
 	}
 
 	public String getDataTransferencia() {
