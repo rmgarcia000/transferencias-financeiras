@@ -1,4 +1,4 @@
-package br.com.transferenciasfinanceirasapi.controller.request;
+package br.com.transferenciasfinanceirasapi.controller.response;
 
 public abstract class Response {
 	private int codigoRetorno;

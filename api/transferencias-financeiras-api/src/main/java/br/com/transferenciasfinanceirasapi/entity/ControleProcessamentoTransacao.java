@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.transferenciasfinanceirasapi.enums.StatusProcessamentoEnum;
+import br.com.transferenciasfinanceirasapi.enums.StatusTransacaoEnum;
 
 @Entity
 @Table(name = "tbl_controle_processamento_transacao")

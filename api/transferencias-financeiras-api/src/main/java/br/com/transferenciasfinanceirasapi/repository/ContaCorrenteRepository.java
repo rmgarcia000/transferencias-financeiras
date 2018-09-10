@@ -6,4 +6,6 @@ import br.com.transferenciasfinanceirasapi.entity.ContaCorrente;
 
 public interface ContaCorrenteRepository extends JpaRepository<ContaCorrente, Integer> {
 
+	ContaCorrente findByCta(String contaOrigem);
+
 }

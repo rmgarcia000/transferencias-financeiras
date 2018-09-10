@@ -9,4 +9,6 @@ public interface AgendamentoTransferenciaFinanceiraService {
 
 	Page<AgendaTransacao> listaTodosAgendamentos(Pageable pageable);
 
+	AgendaTransacao buscaPorId(int id);
+
 }

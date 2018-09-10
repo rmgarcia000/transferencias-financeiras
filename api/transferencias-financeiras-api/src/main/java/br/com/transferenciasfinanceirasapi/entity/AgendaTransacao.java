@@ -3,7 +3,10 @@ package br.com.transferenciasfinanceirasapi.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.transferenciasfinanceirasapi.enums.StatusTransacaoEnum;
 import br.com.transferenciasfinanceirasapi.enums.TipoTransacaoEnum;
 
 @Entity
@@ -19,12 +23,14 @@ import br.com.transferenciasfinanceirasapi.enums.TipoTransacaoEnum;
 public class AgendaTransacao {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer id;
 
+	@Enumerated(EnumType.STRING)
 	private TipoTransacaoEnum tipoTransacao;
 
-	private Integer idStatusTransacao;
+	@Enumerated(EnumType.STRING)
+	private StatusTransacaoEnum statusTransacao;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_cta_origem", referencedColumnName = "id")
@@ -44,32 +50,20 @@ public class AgendaTransacao {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public TipoTransacaoEnum getIdTipoTransacao() {
-		return tipoTransacao;
-	}
-
-	public void setIdTipoTransacao(TipoTransacaoEnum tipoTransacao) {
-		this.tipoTransacao = tipoTransacao;
-	}
-
-	public Integer getIdStatusTransacao() {
-		return idStatusTransacao;
-	}
-
-	public void setIdStatusTransacao(Integer idStatusTransacao) {
-		this.idStatusTransacao = idStatusTransacao;
-	}
-
 	public TipoTransacaoEnum getTipoTransacao() {
 		return tipoTransacao;
 	}
 
 	public void setTipoTransacao(TipoTransacaoEnum tipoTransacao) {
 		this.tipoTransacao = tipoTransacao;
+	}
+
+	public StatusTransacaoEnum getStatusTransacao() {
+		return statusTransacao;
+	}
+
+	public void setStatusTransacao(StatusTransacaoEnum statusTransacao) {
+		this.statusTransacao = statusTransacao;
 	}
 
 	public ContaCorrente getCtaOrigem() {
@@ -111,4 +105,9 @@ public class AgendaTransacao {
 	public void setDtAgendamento(Timestamp dtAgendamento) {
 		this.dtAgendamento = dtAgendamento;
 	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 }
