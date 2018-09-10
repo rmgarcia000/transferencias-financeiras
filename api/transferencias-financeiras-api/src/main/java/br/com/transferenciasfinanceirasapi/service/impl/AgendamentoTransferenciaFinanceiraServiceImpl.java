@@ -43,12 +43,11 @@ public class AgendamentoTransferenciaFinanceiraServiceImpl implements Agendament
 		return null;
 	}
 
-	public AgendaTransacao agendar(AgendarRequest request) throws Exception {
+	public AgendaTransacao agendar(AgendarRequest request, Date dataAgendamento) throws Exception {
 		ContaCorrente ctaOrigem = this.ctaCorrenteRepository.findByCta(request.getContaOrigem());
 		ContaCorrente ctaDestino = this.ctaCorrenteRepository.findByCta(request.getContaDestino());
 
 		AgendaTransacao novoAgendamento = new AgendaTransacao();
-		Date dataAgendamento = new Date();
 		Date dataTransferencia;
 		
 		try {

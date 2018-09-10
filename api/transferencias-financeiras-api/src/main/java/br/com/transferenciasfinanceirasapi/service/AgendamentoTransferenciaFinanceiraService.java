@@ -1,5 +1,7 @@
 package br.com.transferenciasfinanceirasapi.service;
 
+import java.util.Date;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,6 +14,6 @@ public interface AgendamentoTransferenciaFinanceiraService {
 
 	AgendaTransacao buscaPorId(int id);
 
-	AgendaTransacao agendar(AgendarRequest request) throws Exception;
+	AgendaTransacao agendar(AgendarRequest request, Date dataAgendamento) throws Exception;
 
 }

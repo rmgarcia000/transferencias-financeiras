@@ -1,5 +1,7 @@
 package br.com.transferenciasfinanceirasapi.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,7 +37,7 @@ public class AgendamentoTransferenciaFinanceiraController {
 
 	@PostMapping("/agendar")
 	public ResponseEntity<AgendarResponse> agendarTransferenciaFinanceira(@RequestBody AgendarRequest request) throws Exception {
-		return ResponseEntity.ok(new AgendarResponse(this.agendaTransacaoService.agendar(request)));
+		return ResponseEntity.ok(new AgendarResponse(this.agendaTransacaoService.agendar(request, new Date())));
 	}
 
 }
