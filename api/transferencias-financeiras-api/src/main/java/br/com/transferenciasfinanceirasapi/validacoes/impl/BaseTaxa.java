@@ -50,7 +50,7 @@ public abstract class BaseTaxa<T> implements Taxa<T> {
 		this.valorTransacao = valorTransacao;
 	}
 
-	Date truncate(Date data) {
+	Date trancate(Date data) {
 		Calendar cal = Calendar.getInstance(); // locale-specific
 		cal.setTime(data);
 		cal.set(Calendar.HOUR_OF_DAY, 0);
